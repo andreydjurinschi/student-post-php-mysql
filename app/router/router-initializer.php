@@ -16,6 +16,10 @@ $router->addRoute(GET, '/', function () {
     require_once __DIR__ . "/../../public/index.php";
 });
 
+$router->addRoute(GET, '/posts', function(){
+    require_once __DIR__ . "/../../src/parts/posts.php";
+});
+
 
 
 $router->dispatch($path);

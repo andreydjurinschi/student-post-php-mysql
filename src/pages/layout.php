@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $template->get('pageName') ?></title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <title><?= $template->getPageParams('pageName') ?></title>
 </head>
 <body>
-    <header>
-        <h1>WEB PAGE</h1>
+    <header class="header-block">
+        <h1 class="title" style="margin-bottom: 10px">WEB PAGE</h1>
         <nav>
-            <a href="">MAIN PAGE</a>
-            |
-            <a href="">OPA PAGE</a>
+            <ul>
+                <li><a href="#">Main</a></li>
+                <li><a href="/posts">All posts</a></li>
+                <li><a href="#">Create post</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
         </nav>
-        <main>
-            <?= $pageContent ?>
-        </main>
-        <footer>
-            <p>Все права защищены ©</p>
-        </footer>
     </header>
+        <main>
+            <div class="content-block">
+                <?= $pageContent ?>
+            </div>
+        </main>
 </body>
 </html>
