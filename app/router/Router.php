@@ -5,7 +5,8 @@ class Router
 {
     private array $routes = [];
 
-    public function addRoute($method, $path, $controller){
+    public function addRoute($method, $path, $controller): array
+    {
         return $this->routes[] = [
             'method' => $method,
             'path' => $path,
