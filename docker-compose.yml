@@ -1,0 +1,24 @@
+
+volumes:
+  school_post_db:
+
+services:
+  school_db:
+    image: mysql
+    container_name: school_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - school_post_db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: db_interface
+    restart: always
+    environment:
+      PMA_HOST: school_db
+      PMA_PORT: 3306
+    ports:
+      - '8080:80'
