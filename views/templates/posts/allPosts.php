@@ -1,0 +1,1 @@
+<h1>HELLO TO ALL POSTS PAGE</h1>
