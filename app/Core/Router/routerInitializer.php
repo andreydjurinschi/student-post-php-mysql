@@ -21,6 +21,12 @@ $router->addRoute(GET, '/posts', function() use ($template) {
     $template->render('templates/posts/allPosts', ['title' => 'Posts']);
 });
 
+$router->addRoute(GET, '/posts/view', function () use ($template) {
+    if(isset($_GET['post_id'])){
+        $template->render('templates/posts/edit-post', ['title' => 'Post']);
+    }
+});
+
 $router->dispatch($path);
 
 

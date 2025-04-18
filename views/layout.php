@@ -1,9 +1,9 @@
-<html lang="en">
+<!doctype html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student blog - <?= isset($title) ? htmlspecialchars($title) : '' ?></title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <header>
@@ -20,10 +20,12 @@
 <section>
 </section>
 <main>
-    <div class="container">
+
         <?php /** @var string $content */?>
-        <?= $content ?>
-    </div>
+        <div class="container">
+            <?= $content ?>
+        </div>
+
 </main>
 <footer>
     <p>BLABLABLA</p>
