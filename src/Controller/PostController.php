@@ -4,6 +4,7 @@ namespace src\Controller;
 use src\Service\PostService;
 
 require_once __DIR__ . '/../Service/PostService.php';
+require_once __DIR__ . '/../Handler/PostHandler.php';
 class PostController
 {
     private $postService;
@@ -18,4 +19,9 @@ class PostController
     public function getPost($id){
         return $this->postService->getPost($id);
     }
+
+    public function createPost(): array {
+        return $this->postService->addPost($_POST);
+    }
+
 }

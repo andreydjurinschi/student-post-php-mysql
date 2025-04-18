@@ -25,4 +25,18 @@ class PostRepository{
         $statement->execute([$id]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    /***
+     * @param int|null $cat_id
+     * @param string $post_title
+     * @param string $post_description
+     * @param string $post_gif
+     * @return mixed
+     */
+    public function createPost(string $post_title, string $post_description, ?int $cat_id = null, string $post_gif){
+        $statement = $this->connection->prepare("INSERT INTO posts (post_title, post_description, cat_id, post_gif) VALUES (?, ?, ?, ?)");
+        $statement->execute([$post_title, $post_description, $cat_id, $post_gif]);
+        return $statement;
+    }
+
 }

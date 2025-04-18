@@ -12,7 +12,7 @@
         <ul class="navbar">
             <li><a href="/">Main page</a></li>
             <li><a href="/posts">All posts</a></li>
-            <li><a href="#">Create post</a></li>
+            <li><a href="/posts/create">Create post</a></li>
         </ul>
     </nav>
 </header>

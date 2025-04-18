@@ -1,3 +1,112 @@
-body{
-    background-color: #dfaa;
+/* Файл: /assets/style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h2 {
+    color: #222;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.post-container {
+    margin-top: 30px;
+}
+
+.post {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.post h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.post p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.post p:last-child {
+    font-style: italic;
+    color: #888;
+}
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .app-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar li a:hover {
+    background-color: #4CAF50;
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+    font-size: 0.9rem;
 }
