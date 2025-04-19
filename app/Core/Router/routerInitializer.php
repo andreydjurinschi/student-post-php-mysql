@@ -8,6 +8,7 @@ require_once __DIR__ . '/Router.php';
 require_once __DIR__ . '/../Templater.php';
 require_once __DIR__ . '/../../../src/Controller/PostController.php';
 require_once __DIR__ . '/../../../src/Controller/CategoryController.php';
+require_once __DIR__ . '/../../../src/Handler/PostHandler.php';
 use src\Controller\PostController;
 use src\Controller\CategoryController;
 
@@ -37,28 +38,9 @@ $router->addRoute(GET, '/posts/create', function () use ($template) {
 });
 
 $router->addRoute(POST, '/posts/create', function () use ($template) {
-    $controller = new PostController();
-    $message = [];
-
-    // Обрабатываем POST запрос на создание поста
-    if ($_SERVER['REQUEST_METHOD'] === POST && isset($_POST['action']) && $_POST['action'] === 'createPost') {
-        // Получаем результат создания поста
-        $message = $controller->createPost();
-
-        // Если пост успешно создан, перенаправляем на страницу всех постов
-        if (key($message) === 'success') {
-            header('Location: /posts');
-            exit;
-        }
-    }
-
-    // Получаем категории для выпадающего списка
-    $categoryController = new CategoryController();
-    $categories = $categoryController->getCategories();
-
-    // Отображаем форму создания поста с возможными ошибками
-    $template->render('templates/posts/allPosts', [
-    ]);
+    $handler = new PostHandler();
+    $message = $handler->handlePost();
+    $template->render('templates/posts/create-post', ['title' => 'Create Post', 'message' => $message]);
 });
 
 

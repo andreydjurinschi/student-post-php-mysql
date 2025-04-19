@@ -34,7 +34,7 @@ class PostRepository{
      * @return mixed
      */
     public function createPost(string $post_title, string $post_description, ?int $cat_id = null, string $post_gif){
-        $statement = $this->connection->prepare("INSERT INTO posts (post_title, post_description, cat_id, post_gif) VALUES (?, ?, ?, ?)");
+        $statement = $this->connection->prepare("insert into posts (post_title, post_description, cat_id, post_gif) values (?, ?, ?, ?)");
         $statement->execute([$post_title, $post_description, $cat_id, $post_gif]);
         return $statement;
     }

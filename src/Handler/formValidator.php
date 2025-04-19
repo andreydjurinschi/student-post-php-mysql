@@ -9,11 +9,12 @@ class FormValidator {
     }
 
 
-    public static function requiredField($data) {
+    public static function requiredField($data): bool
+    {
         return !empty($data);
     }
 
-    public static function sanitizeData($data)
+    public static function sanitizeData($data): string
     {
         return htmlspecialchars($data);
     }

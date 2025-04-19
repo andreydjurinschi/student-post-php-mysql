@@ -1,16 +1,27 @@
 <?php
 
+use src\Controller\CategoryController;
 use src\Controller\PostController;
 
 require_once __DIR__ . "/../Controller/PostController.php";
+require_once __DIR__ . "/../Controller/CategoryController.php";
 
-$postController = new PostController();
-$message = array();
+class PostHandler{
+    private $postController;
+    public function __construct(){
+        $this->postController = new PostController();
+    }
 
-if(isset($_POST["action"]) && $_POST["action"] === "createPost"){
-    $message = $postController->createPost();
-    if(key($message) === "success"){
-        $_POST = [];
-        exit;
+    public function handlePost(){
+        $message = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'createPost'){
+            $message = $this->postController->createPost();
+            if(key($message) === 'success'){
+                $_POST = [];
+                header("Location: /posts");
+                exit;
+            }
+        }
+        return $message;
     }
 }
