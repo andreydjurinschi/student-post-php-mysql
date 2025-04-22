@@ -4,6 +4,7 @@ namespace src\Repository;
 require_once __DIR__ . "/../../config/DatabaseConnector.php";
 use config\DatabaseConnector;
 use PDO;
+use PDOException;
 
 class PostRepository{
     private $connection;
@@ -15,9 +16,14 @@ class PostRepository{
     }
 
     public function getPosts() : array{
-        $statement = $this->connection->prepare("select * from posts");
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $statement = $this->connection->prepare("select * from posts");
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }catch (PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
     }
 
     public function getPost(int $id){
@@ -33,7 +39,7 @@ class PostRepository{
      * @param string $post_gif
      * @return mixed
      */
-    public function createPost(string $post_title, string $post_description, ?int $cat_id = null, string $post_gif){
+    public function createPost(string $post_title, string $post_description, string $post_gif, ?int $cat_id = null){
         $statement = $this->connection->prepare("insert into posts (post_title, post_description, cat_id, post_gif) values (?, ?, ?, ?)");
         $statement->execute([$post_title, $post_description, $cat_id, $post_gif]);
         return $statement;
