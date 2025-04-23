@@ -33,6 +33,12 @@ $router->addRoute(GET, '/posts/view', function () use ($template) {
     }
 });
 
+$router->addRoute(POST, '/posts/view', function () use ($template) {
+    $handler = new PostHandler();
+    $message = $handler->handlePostUPD();
+    $template->render('templates/posts/edit-post', ['title' => 'Edit Post', 'message' => $message]);
+});
+
 $router->addRoute(GET, '/posts/create', function () use ($template) {
     $template->render('templates/posts/create-post', ['title' => 'Create Post']);
 });
@@ -42,7 +48,6 @@ $router->addRoute(POST, '/posts/create', function () use ($template) {
     $message = $handler->handlePost();
     $template->render('templates/posts/create-post', ['title' => 'Create Post', 'message' => $message]);
 });
-
 
 
 

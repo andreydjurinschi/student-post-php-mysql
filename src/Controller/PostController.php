@@ -17,11 +17,16 @@ class PostController
     }
 
     public function getPost($id){
-        return $this->postService->getPost($id);
+        $post = $this->postService->getPost($id);
+        $_GET = [];
+        return $post;
+    }
+    public function createPost(): array {
+        return $this->postService->createPost($_POST);
     }
 
-    public function createPost(): array {
-        return $this->postService->addPost($_POST);
+    public function updatePost(): array {
+        return $this->postService->updatePost($_POST);
     }
 
 }

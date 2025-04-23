@@ -7,15 +7,13 @@ class FormValidator {
         $len = mb_strlen($data);
         return $len >= $minLength && $len <= $maxLength;
     }
-
-
     public static function requiredField($data): bool
     {
         return !empty($data);
     }
-
     public static function sanitizeData($data): string
     {
+        $data = trim($data);
         return htmlspecialchars($data);
     }
 }

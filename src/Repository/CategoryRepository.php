@@ -21,4 +21,11 @@ class CategoryRepository
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getCategory($id){
+        $sql = "select * from categories where cat_id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

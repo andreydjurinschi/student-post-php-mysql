@@ -13,4 +13,7 @@ class CategoryController
     public function getCategories(){
         return $this->categoryService->getAllCategories();
     }
+    public function getCategory($id){
+        return $this->categoryService->getCategory($id);
+    }
 }

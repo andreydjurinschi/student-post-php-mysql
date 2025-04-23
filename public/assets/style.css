@@ -170,6 +170,14 @@ input[type=submit]:hover {
     clear: both;
 }
 
+img {
+    max-width: 150px;
+}
 
-
-/* CREATE POST */
+.btn-edit{
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 4px;
+}

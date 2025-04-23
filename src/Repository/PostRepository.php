@@ -37,12 +37,22 @@ class PostRepository{
      * @param string $post_title
      * @param string $post_description
      * @param string $post_gif
-     * @return mixed
+     * @return bool
      */
-    public function createPost(string $post_title, string $post_description, string $post_gif, ?int $cat_id = null){
-        $statement = $this->connection->prepare("insert into posts (post_title, post_description, cat_id, post_gif) values (?, ?, ?, ?)");
-        $statement->execute([$post_title, $post_description, $cat_id, $post_gif]);
-        return $statement;
+    public function createPost(string $post_title, string $post_description,string $post_gif,  ?int $cat_id = null): bool
+    {
+        $statement = $this->connection->prepare("insert into posts(post_title, post_description, cat_id, post_gif) values (?, ?, ?, ?)");
+        $statement->execute([$post_title, $post_description,  $cat_id, $post_gif]);
+        return (bool)$statement;
     }
+
+    public function editPost(string $post_title, string $post_description,string $post_gif, int $post_id, ?int $cat_id = null){
+        $statement = $this->connection->prepare("update posts set post_title = ?, post_description = ?, cat_id = ?, post_gif = ? where post_id = ?");
+        $statement->execute([$post_title, $post_description, $cat_id, $post_gif, $post_id]);
+        return (bool)$statement;
+    }
+
+
+
 
 }

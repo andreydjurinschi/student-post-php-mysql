@@ -28,7 +28,6 @@
 
 </main>
 <footer>
-    <p>BLABLABLA</p>
 </footer>
 </body>
 </html>

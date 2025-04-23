@@ -30,5 +30,5 @@ $categories = $categoryController->getCategories();
             <?php endforeach;
         }
         ?>
-    <input type="submit">
+    <input type="submit" value="Create">
 </form>
