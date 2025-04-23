@@ -27,6 +27,7 @@ $posts = $postController->getPosts();
 
                 <img class="stu-gif" src="<?= $post['post_gif']?>" alt="">
         <a href="/posts/view?post_id=<?= $post['post_id'] ?>" class="btn-edit">Edit</a>
+        <a href="/posts/view/delete?post_id=<?= $post['post_id'] ?>" class="btn-edit">Delete</a>
             </div>
         <?php } ?>
     </div>

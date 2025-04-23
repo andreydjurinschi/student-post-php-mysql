@@ -49,6 +49,19 @@ $router->addRoute(POST, '/posts/create', function () use ($template) {
     $template->render('templates/posts/create-post', ['title' => 'Create Post', 'message' => $message]);
 });
 
+$router->addRoute(GET, '/posts/view/delete', function () use ($template) {
+    if(isset($_GET['post_id'])){
+        $template->render('templates/posts/delete-post', ['title' => 'Delete post']);
+    }
+});
+
+$router->addRoute(POST, '/posts/view/delete', function () use ($template) {
+    $handler = new PostHandler();
+    $message = $handler->handlePostDEL();
+    $template->render('templates/posts/delete-post', ['title' => 'Delete Post', 'message' => $message]);
+});
+
+
 
 
 $router->dispatch($path);

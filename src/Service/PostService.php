@@ -14,6 +14,9 @@ class PostService
         $this->formValidator = new FormValidator();
     }
 
+    /**
+     * @return array
+     */
     public function getPosts(){
         return $this->repository->getPosts();
     }
@@ -22,6 +25,10 @@ class PostService
         return $this->repository->getPost($id);
     }
 
+    /**
+     * @param array $post_data
+     * @return string[]
+     */
     public function createPost(array $post_data){
         $post_title = $this->formValidator::sanitizeData($post_data['post_title'] ?? '');
         $post_description = $this->formValidator::sanitizeData($post_data['post_description'] ?? '');
@@ -45,6 +52,10 @@ class PostService
         }
     }
 
+    /**
+     * @param array $post_data
+     * @return string[]
+     */
     public function updatePost(array $post_data){
         $post_title = $this->formValidator::sanitizeData($post_data['post_title'] ?? '');
         $post_description = $this->formValidator::sanitizeData($post_data['post_description'] ?? '');
@@ -69,6 +80,23 @@ class PostService
             return ['success' => 'Post updated successfully!'];
         } catch (\PDOException $e) {
             return ['error' => 'Error saving post: ' . $e->getMessage()];
+        }
+    }
+
+    /**
+     * @return string[]
+     */
+    public function deletePost(array $postData){
+        $id = (int)($postData['post_id'] ?? 0);
+        $post = $this->repository->getPost($id);
+        if ($post === null) {
+            return ['error' => 'Post not found'];
+        }
+        try {
+            $this->repository->deletePost($id);
+            return ['success' => 'Post deleted successfully!'];
+        } catch (\PDOException $e) {
+            return ['error' => 'Error deleting post: ' . $e->getMessage()];
         }
     }
 

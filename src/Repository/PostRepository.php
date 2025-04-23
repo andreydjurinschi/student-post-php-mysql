@@ -15,6 +15,9 @@ class PostRepository{
         $this->connection = $db->getConnection();
     }
 
+    /**
+     * @return array
+     */
     public function getPosts() : array{
         try {
             $statement = $this->connection->prepare("select * from posts");
@@ -26,6 +29,10 @@ class PostRepository{
         }
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getPost(int $id){
         $statement = $this->connection->prepare("select * from posts where post_id = ?");
         $statement->execute([$id]);
@@ -46,9 +53,27 @@ class PostRepository{
         return (bool)$statement;
     }
 
-    public function editPost(string $post_title, string $post_description,string $post_gif, int $post_id, ?int $cat_id = null){
+    /**
+     * @param string $post_title
+     * @param string $post_description
+     * @param string $post_gif
+     * @param int $post_id
+     * @param int|null $cat_id
+     * @return bool
+     */
+    public function editPost(string $post_title, string $post_description, string $post_gif, int $post_id, ?int $cat_id = null){
         $statement = $this->connection->prepare("update posts set post_title = ?, post_description = ?, cat_id = ?, post_gif = ? where post_id = ?");
         $statement->execute([$post_title, $post_description, $cat_id, $post_gif, $post_id]);
+        return (bool)$statement;
+    }
+
+    /**
+     * @param int $post_id
+     * @return bool
+     */
+    public function deletePost(int $post_id){
+        $statement = $this->connection->prepare("delete from posts where post_id = ?");
+        $statement->execute([$post_id]);
         return (bool)$statement;
     }
 

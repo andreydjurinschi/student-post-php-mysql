@@ -43,6 +43,20 @@ class PostHandler
         return $message;
     }
 
+    public function handlePostDEL()
+    {
+        $message = [];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'deletePost') {
+            $message = $this->postController->deletePost();
+            if (key($message) === 'success') {
+                $_POST = [];
+                header("Location: /posts");
+                exit;
+            }
+        }
+        return $message;
+    }
+
 
 
 

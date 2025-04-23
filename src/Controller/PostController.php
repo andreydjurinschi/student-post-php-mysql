@@ -28,5 +28,8 @@ class PostController
     public function updatePost(): array {
         return $this->postService->updatePost($_POST);
     }
+    public function deletePost(): array {
+        return $this->postService->deletePost($_POST);
+    }
 
 }
